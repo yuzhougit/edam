@@ -4,6 +4,7 @@ package com.citrix.mvcdemo.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.RequestWrapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,6 +63,12 @@ public class CourseController {
         request.setAttribute("course",course);
         
         return "course_overview";
+    }
+    
+    @RequestMapping(value = "/admin", method = RequestMethod.GET, params = "add")
+    public String createCourse() {
+    	
+    	return "course_admin/edit";
     }
     
     
