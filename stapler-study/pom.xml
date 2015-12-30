@@ -11,9 +11,16 @@
   <properties>
         <jdk.version>1.8</jdk.version>
         <junit.version>4.11</junit.version>
+        <slf4j.version>1.7.6</slf4j.version>
   </properties>
   
   <dependencies>
+  
+    <dependency>
+	    <groupId>org.kohsuke.stapler</groupId>
+	    <artifactId>stapler</artifactId>
+	    <version>1.237</version>
+	</dependency>
   
     <dependency>
       <groupId>junit</groupId>
@@ -28,6 +35,24 @@
 	  <version>3.1.0</version>
 	  <scope>provided</scope>
 	</dependency>
+	
+	<dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
+        <exclusions>
+            <exclusion>
+                <artifactId>slf4j-api</artifactId>
+                <groupId>org.slf4j</groupId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+    </dependency>
     
   </dependencies>
   
@@ -58,6 +83,12 @@
                 <target>${jdk.version}</target>
             </configuration>
           </plugin>
+          
+          <plugin>
+			  <groupId>org.eclipse.jetty</groupId>
+			  <artifactId>jetty-maven-plugin</artifactId>
+			  <version>9.2.2.v20140723</version>
+		  </plugin>
     </plugins>
   </build>
 </project>
