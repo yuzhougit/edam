@@ -1,4 +1,5 @@
 package com.citrix.plugins.Sample;
+
 import hudson.Launcher;
 import hudson.Extension;
 import hudson.FilePath;
@@ -10,12 +11,15 @@ import hudson.tasks.Builder;
 import hudson.tasks.BuildStepDescriptor;
 import jenkins.tasks.SimpleBuildStep;
 import net.sf.json.JSONObject;
+
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.QueryParameter;
 
 import javax.servlet.ServletException;
+
 import java.io.IOException;
+import java.io.PrintStream;
 
 /**
  * Sample {@link Builder}.
@@ -54,12 +58,17 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
     public void perform(Run<?,?> build, FilePath workspace, Launcher launcher, TaskListener listener) {
         // This is where you 'build' the project.
         // Since this is a dummy, we just say 'hello world' and call that a build.
+        
+        PrintStream out = listener.getLogger();
+        
+        int number = build.getNumber();
+        out.println(String.format("Current build number: %d", number));
 
         // This also shows how you can consult the global configuration of the builder
         if (getDescriptor().getUseFrench())
-            listener.getLogger().println("Bonjour, "+name+"!");
+            out.println("Bonjour, "+name+"!");
         else
-            listener.getLogger().println("Hello, "+name+"!");
+            out.println("Hello, "+name+"!");
     }
 
     // Overridden for better type safety.

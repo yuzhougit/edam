@@ -10,6 +10,7 @@
     <version>1.580.1</version>
     <relativePath/>
   </parent>
+  
   <groupId>com.citrix.plugins</groupId>
   <artifactId>Sample</artifactId>
   <version>1.0-SNAPSHOT</version>
@@ -17,7 +18,7 @@
 
   <name>Sample Plugin</name>
   <description>This is a sample plugin for demo how to develop jenkins plugins</description>
-  <url>https://wiki.jenkins-ci.org/display/JENKINS/TODO+Plugin</url>
+  <url>https://wiki.jenkins-ci.org/display/JENKINS/Sample+Plugin</url>
   <licenses>
     <license>
       <name>MIT License</name>
@@ -40,18 +41,31 @@
     <url>http://github.com/jenkinsci/${project.artifactId}-plugin</url>
   </scm>
    -->
+   
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.4.1</version>
+      </plugin>
+    </plugins>
+  </build>
+  
   <repositories>
     <repository>
       <id>repo.jenkins-ci.org</id>
       <url>http://repo.jenkins-ci.org/public/</url>
     </repository>
   </repositories>
+  
   <pluginRepositories>
     <pluginRepository>
       <id>repo.jenkins-ci.org</id>
       <url>http://repo.jenkins-ci.org/public/</url>
     </pluginRepository>
   </pluginRepositories>
+  
   <!-- If you want to depend on other plugins:
   <dependencies>
     <dependency>
